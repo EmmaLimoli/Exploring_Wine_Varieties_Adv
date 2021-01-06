@@ -18,7 +18,8 @@ SELECT * FROM blue_pair;
 
 -- cheeseboard_final csv with all the pdfs together
 create table final_cheese (
-	Variety varchar,
+	Cheese varchar,
+	"Type" VARCHAR,
 	Wines varchar,
 	Beverages varchar,
 	"Fruits/Vegetables" varchar,
