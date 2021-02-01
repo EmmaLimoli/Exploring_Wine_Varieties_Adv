@@ -62,13 +62,20 @@ function init() {
             d3.select("#selDataset")
             // adding to the array
             .append("option")
-            // .on("change")
-            // .select("option")
-            // .enter().append("option")
-            // attribute
-            .attr("value", (i) => d[1])
-            // print text of function
-            .text(d);
+            .append("select")
+            .on("change", function (d) {
+                var value = d3.select(this).property("value");
+                alert(value)
+            })
+
+            .selectAll("option")
+            // printing in dropdown
+            .data(data.values())
+            .enter()
+                .append("option")
+                // printing in dropdown
+                .attr("value", function (d) { return d.Cheese; })
+                .text(function (d) { return d.Cheese; });
         })
     })
     })
@@ -76,3 +83,27 @@ function init() {
 }
 
 init();
+
+// d3.csv("data/cheese_pract.csv", function(data) {
+//     console.log(data);
+//         data.forEach(function(cheesedata) {
+//         console.log(cheesedata);
+    
+//     var select = d3.select("body")
+//         .append("option")
+//         .append("select")
+
+//     select
+//         .on("change", function(d) {
+//             var value = d3.select(this).property("value");
+//             alert(value);
+//         });
+
+//     select.selectAll("option")
+//         .data(data)
+//         .enter()
+//             .append("option")
+//             .attr("Cheese", function (d) { return d.value; })
+//             .text(function (d) { return d.Cheese; });
+//     })
+// });
